@@ -1,0 +1,63 @@
+================================================================================
+CROSS-ASSET CORRELATION ANALYSIS BY REGIME
+================================================================================
+
+Assets: S&P 500, Nasdaq 100 (Tech), Financials, Energy, Gold, Long-Term Treasuries
+
+--- CORRELATION MATRIX: CALM ---
+
+Ticker     GLD     QQQ     SPY     TLT     XLE     XLF
+Ticker                                                
+GLD     1.0000  0.0482  0.0755  0.1934  0.1981 -0.0354
+QQQ     0.0482  1.0000  0.8903 -0.1247  0.3305  0.5630
+SPY     0.0755  0.8903  1.0000 -0.1767  0.5337  0.7827
+TLT     0.1934 -0.1247 -0.1767  1.0000 -0.2135 -0.2834
+XLE     0.1981  0.3305  0.5337 -0.2135  1.0000  0.4906
+XLF    -0.0354  0.5630  0.7827 -0.2834  0.4906  1.0000
+
+--- CORRELATION MATRIX: ELEVATED_RISK ---
+
+Ticker     GLD     QQQ     SPY     TLT     XLE     XLF
+Ticker                                                
+GLD     1.0000  0.0967  0.1036  0.1252  0.1436 -0.0128
+QQQ     0.0967  1.0000  0.9190 -0.2231  0.4511  0.6600
+SPY     0.1036  0.9190  1.0000 -0.3166  0.6275  0.8402
+TLT     0.1252 -0.2231 -0.3166  1.0000 -0.3649 -0.3807
+XLE     0.1436  0.4511  0.6275 -0.3649  1.0000  0.5958
+XLF    -0.0128  0.6600  0.8402 -0.3807  0.5958  1.0000
+
+--- CORRELATION MATRIX: CRISIS ---
+
+Ticker     GLD     QQQ     SPY     TLT     XLE     XLF
+Ticker                                                
+GLD     1.0000  0.0119  0.0289  0.1324  0.1380 -0.0543
+QQQ     0.0119  1.0000  0.9480 -0.4061  0.7615  0.7720
+SPY     0.0289  0.9480  1.0000 -0.4223  0.8518  0.8622
+TLT     0.1324 -0.4061 -0.4223  1.0000 -0.3868 -0.3810
+XLE     0.1380  0.7615  0.8518 -0.3868  1.0000  0.7132
+XLF    -0.0543  0.7720  0.8622 -0.3810  0.7132  1.0000
+
+
+--- ANNUALIZED MEAN RETURN BY REGIME ---
+
+          calm  elevated_risk  crisis
+Ticker                               
+GLD     0.0811         0.1527  0.1001
+QQQ     0.4251        -0.1033 -0.8039
+SPY     0.3411        -0.0700 -0.7683
+TLT    -0.0147         0.0830  0.1479
+XLE     0.2591         0.0788 -0.9993
+XLF     0.3431        -0.1541 -1.0030
+
+
+--- KEY THINGS TO LOOK FOR ---
+
+  1. SPY-TLT correlation: Does it flip negative in crisis? (flight to safety)
+  2. SPY-GLD correlation: Does gold decouple from equities during stress?
+  3. SPY-QQQ correlation: Tech and S&P move together in calm — does it
+     tighten further in crisis? (correlation convergence)
+  4. XLF during crisis: Financials often lead into stress and get hit hardest
+  5. XLE behavior: Energy is commodity-driven — does it follow equities or
+     diverge based on its own supply/demand dynamics?
+
+================================================================================
