@@ -1,0 +1,50 @@
+================================================================================
+REGIME STATISTICS REPORT
+================================================================================
+
+--- REGIME DURATION STATISTICS ---
+
+               num_periods  mean_days  median_days  min_days  max_days  std_days
+regime                                                                          
+calm                   150       30.3          6.5         1       453      58.1
+crisis                  66       13.1          4.0         1       246      32.6
+elevated_risk          214        8.3          3.0         1       113      14.2
+
+
+--- REGIME TRANSITION PROBABILITIES ---
+(Row = current regime, Column = next day's regime)
+
+to               calm  crisis  elevated_risk
+from                                        
+calm           0.9530  0.0003         0.0466
+crisis         0.0000  0.8918         0.1082
+elevated_risk  0.1148  0.0501         0.8351
+
+
+--- DAILY RETURN STATISTICS BY REGIME ---
+
+               count      mean       std       min       max  mean_annualized  std_annualized  sharpe_approx
+regime                                                                                                      
+calm            3174  0.001354  0.006581 -0.039841  0.032513         0.341138        0.104467       3.265520
+crisis           610 -0.003049  0.026299 -0.115887  0.135577        -0.768349        0.417479      -1.840451
+elevated_risk   1298 -0.000278  0.012006 -0.044456  0.053497        -0.070012        0.190597      -0.367330
+
+
+--- VIX STATISTICS BY REGIME ---
+
+                mean  median    min    max    std
+regime                                           
+calm           14.76   14.61   9.14  19.97   2.57
+crisis         36.90   33.03  21.15  82.69  11.53
+elevated_risk  22.94   22.61  15.24  29.99   2.89
+
+
+--- KEY OBSERVATIONS ---
+
+Look for:
+  1. How sticky are regimes? (high self-transition probability = sticky)
+  2. Does crisis come from elevated_risk or directly from calm?
+  3. Is the return difference between regimes economically meaningful?
+  4. How long does the average crisis last vs. calm period?
+
+================================================================================

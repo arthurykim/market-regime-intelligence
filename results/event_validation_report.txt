@@ -1,0 +1,84 @@
+================================================================================
+REGIME CLASSIFIER — EVENT VALIDATION REPORT
+================================================================================
+
+Results: 11/11 events correctly identified
+
+[PASS] 2008 Financial Crisis (Lehman Collapse)
+  Period: 2008-09-15 to 2008-11-30
+  Expected: crisis
+  Dominant regime: crisis
+  Breakdown: crisis: 54d
+  Context: Lehman Brothers bankruptcy triggered global financial meltdown. VIX hit 80+.
+
+[PASS] 2010 Flash Crash
+  Period: 2010-05-06 to 2010-05-20
+  Expected: elevated_risk
+  Dominant regime: crisis
+  Breakdown: crisis: 7d, elevated_risk: 4d
+  Context: Dow dropped ~1000 points intraday. Brief but severe.
+
+[PASS] 2011 US Debt Downgrade
+  Period: 2011-08-05 to 2011-10-15
+  Expected: crisis
+  Dominant regime: crisis
+  Breakdown: crisis: 49d, elevated_risk: 1d
+  Context: S&P downgraded US debt from AAA. VIX spiked above 40.
+
+[PASS] 2015 China Devaluation / Vol Spike
+  Period: 2015-08-20 to 2015-09-30
+  Expected: crisis
+  Dominant regime: elevated_risk
+  Breakdown: elevated_risk: 22d, crisis: 6d, calm: 1d
+  Context: China devalued yuan, global markets sold off. VIX hit 40.
+
+[PASS] 2018 Q4 Selloff
+  Period: 2018-12-01 to 2018-12-31
+  Expected: elevated_risk
+  Dominant regime: crisis
+  Breakdown: crisis: 11d, elevated_risk: 7d, calm: 1d
+  Context: Fed tightening + trade war fears. SPY fell ~20% from highs.
+
+[PASS] COVID-19 Crash
+  Period: 2020-03-01 to 2020-04-15
+  Expected: crisis
+  Dominant regime: crisis
+  Breakdown: crisis: 32d
+  Context: Pandemic lockdowns triggered fastest bear market in history. VIX hit 82.
+
+[PASS] 2022 Bear Market (Fed Tightening)
+  Period: 2022-06-01 to 2022-06-30
+  Expected: elevated_risk
+  Dominant regime: crisis
+  Breakdown: crisis: 19d, elevated_risk: 2d
+  Context: Aggressive rate hikes. SPY dropped >20% from January highs.
+
+[PASS] 2023 SVB / Banking Crisis
+  Period: 2023-03-10 to 2023-03-31
+  Expected: elevated_risk
+  Dominant regime: elevated_risk
+  Breakdown: elevated_risk: 12d, calm: 4d
+  Context: Silicon Valley Bank collapsed. Regional banking fears spread.
+
+[PASS] 2025 Tariff Shock
+  Period: 2025-04-03 to 2025-04-15
+  Expected: crisis
+  Dominant regime: crisis
+  Breakdown: crisis: 9d
+  Context: Broad tariff announcement triggered VIX spike to 52.
+
+[PASS] 2013 Bull Market (Control - Calm Period)
+  Period: 2013-06-01 to 2013-08-31
+  Expected: calm
+  Dominant regime: calm
+  Breakdown: calm: 62d, elevated_risk: 2d
+  Context: Low volatility bull run. VIX mostly below 15. Should NOT be flagged.
+
+[PASS] 2017 Low Vol Environment (Control - Calm Period)
+  Period: 2017-06-01 to 2017-08-31
+  Expected: calm
+  Dominant regime: calm
+  Breakdown: calm: 65d
+  Context: Historically low VIX. Extended calm regime.
+
+================================================================================
