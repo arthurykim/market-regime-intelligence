@@ -16,14 +16,30 @@ Multi-panel view of VIX, realized volatility, drawdown depth, and regime labels:
 
 ![Feature Dashboard](docs/images/feature_dashboard.png)
 
+### Cross-Asset Correlation by Regime
+How asset correlations shift across market regimes — note how correlations tighten during crisis:
+
+![Correlation Heatmaps](docs/images/correlation_heatmaps.png)
+
+### Rolling Correlation vs SPY
+60-day rolling correlation of each asset against SPY, with regime shading:
+
+![Rolling Correlations](docs/images/rolling_correlations.png)
+
+### Annualized Return by Asset and Regime
+How each asset class performs in calm, elevated risk, and crisis environments:
+
+![Regime Return Comparison](docs/images/regime_return_comparison.png)
+
 ## What It Does
 
-- Downloads 20 years of daily SPY and VIX data via yfinance
+- Downloads 20 years of daily data for SPY, VIX, QQQ, XLF, XLE, GLD, and TLT via yfinance
 - Computes risk features: rolling realized volatility, drawdown depth, VIX-realized vol spread, return z-scores
 - Classifies each trading day into one of three regimes: **calm**, **elevated_risk**, or **crisis**
 - Validates the classifier against 11 known market events (2008 crisis, COVID, 2025 tariffs, etc.)
 - Computes regime statistics: durations, transition probabilities, return distributions by regime
-- Generates regime timeline and feature dashboard visualizations
+- Analyzes cross-asset correlations conditioned on regime state
+- Generates 5 publication-quality visualizations
 - Serves regime data and features through a REST API
 
 ## Regime Classification
@@ -77,6 +93,33 @@ Key finding: The market almost never jumps directly from calm to crisis — it t
 - calm: +34.1%
 - elevated_risk: -7.0%
 - crisis: -76.8%
+
+## Cross-Asset Correlation Findings
+
+Analysis covers SPY, QQQ (tech), XLF (financials), XLE (energy), GLD (gold), and TLT (long-term treasuries).
+
+**Key findings from the correlation analysis:**
+
+| Relationship | Calm | Elevated Risk | Crisis | Interpretation |
+|-------------|------|---------------|--------|----------------|
+| SPY-TLT | -0.18 | -0.32 | -0.42 | Flight to safety intensifies in crisis — bonds become a stronger hedge |
+| SPY-QQQ | 0.89 | 0.92 | 0.95 | Correlation convergence — diversification within equities disappears in crisis |
+| SPY-GLD | 0.08 | 0.10 | 0.03 | Gold stays uncorrelated across all regimes — genuine diversifier |
+| SPY-XLF | 0.78 | 0.84 | 0.86 | Financials track the market tightly and get hit hardest in crisis (-100% annualized) |
+| SPY-XLE | 0.53 | 0.63 | 0.85 | Energy converges with equities in crisis — commodity diversification fails when you need it most |
+
+**Annualized return by asset and regime:**
+
+| Asset | Calm | Elevated Risk | Crisis |
+|-------|------|---------------|--------|
+| GLD | +8.1% | +15.3% | +10.0% |
+| QQQ | +42.5% | -10.3% | -80.4% |
+| SPY | +34.1% | -7.0% | -76.8% |
+| TLT | -1.5% | +8.3% | +14.8% |
+| XLE | +25.9% | +7.9% | -99.9% |
+| XLF | +34.3% | -15.4% | -100.3% |
+
+Gold and treasuries are the only assets with positive returns across all regimes. Financials and energy get destroyed in crisis.
 
 ## Features Computed
 
@@ -133,10 +176,12 @@ market-regime-intelligence/
       data_loader.py                 # yfinance ingestion + parquet caching
       feature_engineering.py         # Risk feature computation
       regime_classifier.py           # Rule-based regime classification
+      cross_asset.py                 # Cross-asset correlation analysis
       summary_service.py             # Orchestration layer for API
     models/schemas.py                # Pydantic response models
     utils/
-      plotting.py                    # Visualization generation
+      plotting.py                    # Regime visualizations
+      correlation_plots.py           # Cross-asset visualizations
       logging_utils.py               # Logger config
   evaluation/
     event_validation.py              # Validate classifier against known events
@@ -149,6 +194,7 @@ market-regime-intelligence/
   results/                           # Generated reports and data exports
     event_validation_report.txt
     regime_statistics_report.txt
+    cross_asset_correlation_report.txt
     feature_table_latest.csv
   docs/images/                       # Charts for README
   data/                              # Cached parquet files (gitignored)
